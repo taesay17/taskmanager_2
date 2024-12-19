@@ -1,6 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useTasks } from './TaskContext';
 
-function AddTask({ taskInput, setTaskInput, handleAddTask }) {
+function AddTask() {
+  const { addTask } = useTasks();
+  const [taskInput, setTaskInput] = useState('');
+
+  const handleAddTask = () => {
+    if (taskInput) {
+      addTask(taskInput);
+      setTaskInput('');
+    }
+  };
+
   return (
     <div>
       <input
