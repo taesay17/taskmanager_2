@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import AddTask from './AddTask';
+import TaskList from './TaskList';
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -13,18 +15,8 @@ function App() {
 
   return (
     <div>
-      <input
-        type="text"
-        value={taskInput}
-        onChange={(e) => setTaskInput(e.target.value)}
-        placeholder="Добавьте задачу"
-      />
-      <button onClick={handleAddTask}>Добавить задачу</button>
-      <ul>
-        {tasks.map((task, index) => (
-          <li key={index}>{task}</li>
-        ))}
-      </ul>
+      <AddTask taskInput={taskInput} setTaskInput={setTaskInput} handleAddTask={handleAddTask} />
+      <TaskList tasks={tasks} />
     </div>
   );
 }
